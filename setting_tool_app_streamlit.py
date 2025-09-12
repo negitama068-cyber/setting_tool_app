@@ -66,16 +66,28 @@ import streamlit as st
 
 st.set_page_config(page_title="設定推定ツール", layout="wide")
 
-# 初あたり関連
+# CSSで余白とラベルサイズを小さくしてコンパクト化
+st.markdown("""
+<style>
+div[data-testid="stNumberInput"] label {
+    font-size: 0.85em;
+}
+div[data-testid="stNumberInput"] {
+    margin-bottom: 4px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# --- 初あたり関連 ---
 st.header("初あたり関連")
 col1, col2 = st.columns(2)
 with col1:
-    atari_total = st.number_input("初あたり回数", 0, 1000, 3)
-    bet_hit = st.number_input("BET高確発生回数", 0, 1000, 1)
+    atari_total = st.number_input("初あたり", 0, 1000, 3)
+    bet_hit = st.number_input("BET高確", 0, 1000, 1)
 with col2:
-    direct_hit = st.number_input("直撃回数", 0, 1000, 0)
+    direct_hit = st.number_input("直撃", 0, 1000, 0)
 
-# ヒドラ目関連
+# --- ヒドラ目関連 ---
 st.header("ヒドラ目関連")
 col1, col2 = st.columns(2)
 with col1:
@@ -83,7 +95,7 @@ with col1:
 with col2:
     hydra_hit = st.number_input("ヒドラ目当選", 0, 1000, 3)
 
-# ゲーム経由CZ
+# --- ゲーム経由CZ ---
 st.header("ゲーム経由CZ")
 col1, col2 = st.columns(2)
 with col1:
@@ -95,7 +107,7 @@ with col2:
     hit450 = st.number_input("450G当選", 0, 1000, 0)
     hit650 = st.number_input("650G当選", 0, 1000, 0)
 
-# ボナ終了時コメント
+# --- ボナ終了時コメント ---
 st.header("ボナ終了時コメント")
 col1, col2 = st.columns(2)
 with col1:
@@ -127,6 +139,7 @@ if st.button("設定を推定する"):
 st.info("""
 - このツールの推定結果はあくまで参考値ですので、参考程度にお願いします。
 """)
+
 
 
 
