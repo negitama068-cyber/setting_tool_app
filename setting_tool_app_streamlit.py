@@ -2,6 +2,9 @@
 import streamlit as st
 from math import comb
 
+
+st.title("設定推定ツール")
+
 # -----------------------------
 # 設定差情報（確率）
 # -----------------------------
@@ -122,10 +125,10 @@ if st.button("設定を推定する"):
         st.write(f"設定{i}の期待度: {p*100:.2f}%")
     st.success(f"最も期待できる設定は: 設定{best_setting}")
 
-st.markdown("### ℹ️ 注記")
 st.info("""
 - このツールの推定結果はあくまで参考値ですので、参考程度にお願いします。
 """)
+
 
 
 
