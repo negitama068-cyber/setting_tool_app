@@ -2,6 +2,12 @@
 import streamlit as st
 from math import comb
 
+st.set_page_config(
+    page_title="防振り 設定判別ツール",  # noteに表示したいタイトル
+    page_icon="🎰",
+    layout="centered"
+)
+
 # -----------------------------
 # 設定差情報（確率）
 # -----------------------------
@@ -121,3 +127,4 @@ if st.button("設定を推定する"):
     for i, p in enumerate(posterior, 1):
         st.write(f"設定{i}の期待度: {p*100:.2f}%")
     st.success(f"最も期待できる設定は: 設定{best_setting}")
+
