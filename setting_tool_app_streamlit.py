@@ -8,6 +8,8 @@ st.set_page_config(
     layout="centered"
 )
 
+st.title("防振り 設定判別ツール")
+
 # -----------------------------
 # 設定差情報（確率）
 # -----------------------------
@@ -127,4 +129,5 @@ if st.button("設定を推定する"):
     for i, p in enumerate(posterior, 1):
         st.write(f"設定{i}の期待度: {p*100:.2f}%")
     st.success(f"最も期待できる設定は: 設定{best_setting}")
+
 
