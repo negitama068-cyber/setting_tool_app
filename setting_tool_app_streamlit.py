@@ -124,9 +124,9 @@ with st.expander("ゲーム経由CZ"):
 with st.expander("ボナ終了時コメント"):
     col1, col2 = st.columns(2)
     with col1:
-        sally = st.number_input("サリー出現", 0, 1000, 5)
+        sally = st.number_input("サリーしか勝たん出現", 0, 1000, 5)
     with col2:
-        maple = st.number_input("メイプル出現", 0, 1000, 5)
+        maple = st.number_input("メイプルしか勝たん出現", 0, 1000, 5)
 
 comment_data = {'sally': sally, 'maple': maple}
 
@@ -156,6 +156,7 @@ st.info("""注記
 - 不確定要素があったり記憶があいまいな場合はすべてカウントに含まないことをお勧めします。（例；当選契機が300gのゾーンか450gのゾーンか忘れた→それぞれ経由回数、当選回数にカウントしない）
 - このツールの推定結果はあくまで推定値ですので、参考程度にお願いします。
 """)
+
 
 
 
