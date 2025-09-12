@@ -64,17 +64,28 @@ st.title("防振り 設定判別ツール")
 
 import streamlit as st
 
-st.set_page_config(page_title="設定推定ツール", layout="centered")
+st.set_page_config(page_title="設定推定ツール", layout="wide")
 
-# CSSで横2列固定
 st.markdown("""
 <style>
-/* number_input を横2列に配置 */
-[data-testid="stNumberInput"] {
-    display: inline-block;
-    width: 48%;  /* 左右2列 */
-    margin-right: 2%;
-    vertical-align: top;
+/* PC向け：3列レイアウト */
+@media (min-width: 768px) {
+    div[data-testid="stNumberInput"] {
+        display: inline-block;
+        width: 30%;   /* 3列に収まる */
+        margin-right: 2%;
+        vertical-align: top;
+    }
+}
+
+/* スマホ向け：2列固定、横スクロール */
+@media (max-width: 767px) {
+    div[data-testid="stNumberInput"] {
+        display: inline-block;
+        width: 48%;   /* 2列 */
+        margin-right: 2%;
+        vertical-align: top;
+    }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -127,6 +138,7 @@ if st.button("設定を推定する"):
 st.info("""
 - このツールの推定結果はあくまで参考値ですので、参考程度にお願いします。
 """)
+
 
 
 
