@@ -66,14 +66,16 @@ import streamlit as st
 
 st.set_page_config(page_title="設定推定ツール", layout="wide")
 
-# CSSで余白とラベルサイズを少し小さく
+# CSSで入力欄の横幅を縮める
 st.markdown("""
 <style>
-div[data-testid="stNumberInput"] label {
-    font-size: 0.85em;
-}
+/* number_inputの幅を縮めてコンパクトに */
 div[data-testid="stNumberInput"] {
+    max-width: 200px;  /* 横幅を固定 */
     margin-bottom: 4px;
+}
+div[data-testid="stNumberInput"] label {
+    font-size: 0.85em;  /* ラベルを少し小さく */
 }
 </style>
 """, unsafe_allow_html=True)
@@ -105,6 +107,7 @@ with st.expander("ボナ終了時コメント"):
 
 comment_data = {'sally': sally, 'maple': maple}
 
+
 observed = {
     'bet': (bet_hit, atari_total),
     'hydra': (hydra_hit, hydra_total),
@@ -125,6 +128,7 @@ if st.button("設定を推定する"):
 st.info("""
 - このツールの推定結果はあくまで参考値ですので、参考程度にお願いします。
 """)
+
 
 
 
