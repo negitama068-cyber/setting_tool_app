@@ -2,14 +2,6 @@
 import streamlit as st
 from math import comb
 
-st.set_page_config(
-    page_title="防振り 設定判別ツール",  # noteに表示したいタイトル
-    page_icon="🎰",
-    layout="centered"
-)
-
-st.title("防振り 設定判別ツール")
-
 # -----------------------------
 # 設定差情報（確率）
 # -----------------------------
@@ -68,25 +60,25 @@ def calc_setting_probability(observed_data, comment_data=None):
 # -----------------------------
 # Streamlitアプリ
 # -----------------------------
-st.title("🎰 設定推定ツール（セット入力対応版）")
+st.title("防振り 設定判別ツール")
 
-st.header("初あたり関連（母数と成功回数をセットで入力）")
+st.header("初あたり関連")
 col1, col2, col3 = st.columns(3)
 with col1:
-    atari_total = st.number_input("初あたり回数", 0, 1000, 20)
+    atari_total = st.number_input("初あたり回数", 0, 1000, 10)
 with col2:
-    bet_hit = st.number_input("BET高確発生回数", 0, 1000, 2)
+    bet_hit = st.number_input("BET高確発生回数", 0, 1000, 0)
 with col3:
-    direct_hit = st.number_input("直撃回数", 0, 1000, 1)
+    direct_hit = st.number_input("直撃回数", 0, 1000, 0)
 
-st.header("ヒドラ目関連（母数と成功回数セット）")
+st.header("ヒドラ目関連")
 col1, col2 = st.columns(2)
 with col1:
     hydra_total = st.number_input("通常時ヒドラ目出現回数（高確でない）", 0, 1000, 10)
 with col2:
     hydra_hit = st.number_input("通常時ヒドラ目からの初あたり当選回数（高確でない）", 0, 1000, 3)
 
-st.header("ゲーム経由CZ当選（母数と成功回数セット）")
+st.header("ゲーム経由CZ")
 col1, col2 = st.columns(2)
 with col1:
     total300 = st.number_input("300ゲーム経由回数", 0, 1000, 5)
@@ -105,7 +97,7 @@ with col5:
 with col6:
     hit650 = st.number_input("650ゲームCZ当選回数", 0, 1000, 1)
 
-st.header("コメント（任意）")
+st.header("ボナ終了時コメント")
 col1, col2 = st.columns(2)
 with col1:
     sally = st.number_input("サリーしか勝たん出現回数", 0, 1000, 2)
@@ -129,5 +121,11 @@ if st.button("設定を推定する"):
     for i, p in enumerate(posterior, 1):
         st.write(f"設定{i}の期待度: {p*100:.2f}%")
     st.success(f"最も期待できる設定は: 設定{best_setting}")
+
+st.markdown("### ℹ️ 注記")
+st.info("""
+- このツールの推定結果はあくまで参考値ですので、参考程度にお願いします。
+""")
+
 
 
