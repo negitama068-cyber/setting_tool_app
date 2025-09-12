@@ -104,9 +104,9 @@ with st.expander("初あたり関連"):
 with st.expander("ヒドラ目関連"):
     col1, col2 = st.columns(2)
     with col1:
-        hydra_total = st.number_input("ヒドラ目出現", 0, 1000, 10)
+        hydra_total = st.number_input("通常時ヒドラ目出現回数（高確でない）", 0, 1000, 10)
     with col2:
-        hydra_hit = st.number_input("ヒドラ目当選", 0, 1000, 3)
+        hydra_hit = st.number_input("通常時ヒドラ目からの初あたり当選回数（高確でない）", 0, 1000, 3)
 
 # --- ゲーム経由CZ ---
 with st.expander("ゲーム経由CZ"):
@@ -149,9 +149,14 @@ if st.button("設定を推定する"):
         st.write(f"設定{i}の期待度: {p*100:.2f}%")
     st.success(f"最も期待できる設定は: 設定{best_setting}")
 
-st.info("""
+st.info("""注記
+- エピソード後の高確率ZONEはBET高確ではありません。
+- 設定変更後の450,650Gでの当選はカウントしてはいけません。
+- 高確中にひいたヒドラ目はカウントしないでください。（当否関係なく）
+- 不確定要素や記憶があいまいな場合はカウントに含まないことをお勧めします。（例；当選契機が300gのゾーンか450gのゾーンか忘れた→それぞれ経由回数、当選回数にカウントしない）
 - このツールの推定結果はあくまで参考値ですので、参考程度にお願いします。
 """)
+
 
 
 
