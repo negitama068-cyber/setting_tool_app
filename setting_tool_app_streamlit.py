@@ -66,7 +66,7 @@ import streamlit as st
 
 st.set_page_config(page_title="設定推定ツール", layout="wide")
 
-# CSSで余白とラベルサイズを小さくしてコンパクト化
+# CSSで余白とラベルサイズを少し小さく
 st.markdown("""
 <style>
 div[data-testid="stNumberInput"] label {
@@ -79,45 +79,31 @@ div[data-testid="stNumberInput"] {
 """, unsafe_allow_html=True)
 
 # --- 初あたり関連 ---
-st.header("初あたり関連")
-col1, col2 = st.columns(2)
-with col1:
-    atari_total = st.number_input("初あたり", 0, 1000, 3)
-    bet_hit = st.number_input("BET高確", 0, 1000, 1)
-with col2:
-    direct_hit = st.number_input("直撃", 0, 1000, 0)
+with st.expander("初あたり関連"):
+    atari_total = st.number_input("初あたり回数", 0, 1000, 3)
+    bet_hit = st.number_input("BET高確発生回数", 0, 1000, 1)
+    direct_hit = st.number_input("直撃回数", 0, 1000, 0)
 
 # --- ヒドラ目関連 ---
-st.header("ヒドラ目関連")
-col1, col2 = st.columns(2)
-with col1:
-    hydra_total = st.number_input("ヒドラ目出現", 0, 1000, 10)
-with col2:
-    hydra_hit = st.number_input("ヒドラ目当選", 0, 1000, 3)
+with st.expander("ヒドラ目関連"):
+    hydra_total = st.number_input("通常時ヒドラ目出現回数（高確でない）", 0, 1000, 10)
+    hydra_hit = st.number_input("通常時ヒドラ目からの初あたり当選回数（高確でない）", 0, 1000, 3)
 
 # --- ゲーム経由CZ ---
-st.header("ゲーム経由CZ")
-col1, col2 = st.columns(2)
-with col1:
-    total300 = st.number_input("300G経由", 0, 1000, 3)
-    total450 = st.number_input("450G経由", 0, 1000, 2)
-    total650 = st.number_input("650G経由", 0, 1000, 0)
-with col2:
-    hit300 = st.number_input("300G当選", 0, 1000, 1)
-    hit450 = st.number_input("450G当選", 0, 1000, 0)
-    hit650 = st.number_input("650G当選", 0, 1000, 0)
+with st.expander("ゲーム経由CZ"):
+    total300 = st.number_input("300ゲーム経由回数", 0, 1000, 3)
+    hit300 = st.number_input("300ゲームCZ当選回数", 0, 1000, 1)
+    total450 = st.number_input("450ゲーム経由回数", 0, 1000, 2)
+    hit450 = st.number_input("450ゲームCZ当選回数", 0, 1000, 0)
+    total650 = st.number_input("650ゲーム経由回数", 0, 1000, 0)
+    hit650 = st.number_input("650ゲームCZ当選回数", 0, 1000, 0)
 
 # --- ボナ終了時コメント ---
-st.header("ボナ終了時コメント")
-col1, col2 = st.columns(2)
-with col1:
-    sally = st.number_input("サリー出現", 0, 1000, 5)
-with col2:
-    maple = st.number_input("メイプル出現", 0, 1000, 5)
+with st.expander("ボナ終了時コメント"):
+    sally = st.number_input("サリーしか勝たん出現回数", 0, 1000, 5)
+    maple = st.number_input("メイプルしか勝たん出現回数", 0, 1000, 5)
 
 comment_data = {'sally': sally, 'maple': maple}
-
-
 
 observed = {
     'bet': (bet_hit, atari_total),
@@ -139,6 +125,7 @@ if st.button("設定を推定する"):
 st.info("""
 - このツールの推定結果はあくまで参考値ですので、参考程度にお願いします。
 """)
+
 
 
 
