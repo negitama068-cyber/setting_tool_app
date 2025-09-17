@@ -94,9 +94,9 @@ div[data-testid="stNumberInput"] label {
 with st.expander("初あたり関連"):
     col1, col2, col3 = st.columns(3)
     with col1:
-        atari_total = st.number_input("初あたり回数", 0, 1000, 3)
+        atari_total = st.number_input("初あたり回数", 0, 1000, 0)
     with col2:
-        bet_hit = st.number_input("BET高確発生回数", 0, 1000, 1)
+        bet_hit = st.number_input("BET高確発生回数", 0, 1000, 0)
     with col3:
         direct_hit = st.number_input("(初当たりのうち)直撃回数", 0, 1000, 0)
 
@@ -104,19 +104,19 @@ with st.expander("初あたり関連"):
 with st.expander("ヒドラ目関連"):
     col1, col2 = st.columns(2)
     with col1:
-        hydra_total = st.number_input("通常時ヒドラ目出現回数", 0, 1000, 10)
+        hydra_total = st.number_input("通常時ヒドラ目出現回数", 0, 1000, 0)
     with col2:
-        hydra_hit = st.number_input("通常時ヒドラ目からのczへの当選回数", 0, 1000, 3)
+        hydra_hit = st.number_input("通常時ヒドラ目からのczへの当選回数", 0, 1000, 0)
 
 # --- ゲーム経由CZ ---
 with st.expander("ゲーム経由CZ"):
     col1, col2 = st.columns(2)
     with col1:
-        total300 = st.number_input("300G経由", 0, 1000, 3)
-        total450 = st.number_input("450G経由", 0, 1000, 2)
+        total300 = st.number_input("300G経由", 0, 1000, 0)
+        total450 = st.number_input("450G経由", 0, 1000, 0)
         total650 = st.number_input("650G経由", 0, 1000, 0)
     with col2:
-        hit300 = st.number_input("300G czへの当選", 0, 1000, 1)
+        hit300 = st.number_input("300G czへの当選", 0, 1000, 0)
         hit450 = st.number_input("450G czへの当選", 0, 1000, 0)
         hit650 = st.number_input("650G czへの当選", 0, 1000, 0)
 
@@ -124,9 +124,9 @@ with st.expander("ゲーム経由CZ"):
 with st.expander("ボナ終了時コメント"):
     col1, col2 = st.columns(2)
     with col1:
-        sally = st.number_input("サリーしか勝たん出現", 0, 1000, 5)
+        sally = st.number_input("サリーしか勝たん出現", 0, 1000, 0)
     with col2:
-        maple = st.number_input("メイプルしか勝たん出現", 0, 1000, 5)
+        maple = st.number_input("メイプルしか勝たん出現", 0, 1000, 0)
 
 comment_data = {'sally': sally, 'maple': maple}
 
@@ -156,6 +156,7 @@ st.info("""注記
 - 不確定要素があったり記憶があいまいな場合はすべてカウントに含まないことをお勧めします。（例；当選契機が300gのゾーンか450gのゾーンか忘れた→それぞれ経由回数、当選回数にカウントしない）
 - このツールの推定結果はあくまで推定値ですので、参考程度にお願いします。
 """)
+
 
 
 
